@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-hw-05-movies/static/css/main.c1cad30a.css",
+    "main.js": "/react-hw-05-movies/static/js/main.c1d0fbef.js",
+    "index.html": "/react-hw-05-movies/index.html",
+    "main.c1cad30a.css.map": "/react-hw-05-movies/static/css/main.c1cad30a.css.map",
+    "main.c1d0fbef.js.map": "/react-hw-05-movies/static/js/main.c1d0fbef.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c1cad30a.css",
+    "static/js/main.c1d0fbef.js"
+  ]
+}
