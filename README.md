@@ -110,3 +110,34 @@ GitHub.
 3. Якщо всі кроки пройшли успішно, зібрана продакшн-версія файлів проєкту
    відправляється в гілку `gh-pages`. В іншому випадку, в лозі виконання
    скрипта буде вказано в чому проблема.
+
+
+   1. установити
+      1.1 npm install eslint --save-dev
+          npx eslint --init
+
+          "rules": {
+          "react/react-in-jsx-scope": "off"
+
+          npm install eslint-config-prettier eslint-plugin-prettier prettier --save-dev
+
+          "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"]
+  }
+      1.2 npm i react-router-dom
+
+      1.3 npm i modern-normalize 
+
+      1.4 npm install styled-components
+   
+   2. зарегаться
+      https://www.themoviedb.org/u/OlhaBuhun
+
+      логін  OlhaBuhun
+      пароль 1mikrob8TMDB
+      API key  46c0be6b49bf7596a38fb0fb781b3647
+
+      Регаться  особисто для себе
+
+       --url 'https://api.themoviedb.org/3/movie/11?api_key=46c0be6b49bf7596a38fb0fb781b3647'
+
+   3.    
