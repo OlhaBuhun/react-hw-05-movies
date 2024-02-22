@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[346],{346:(e,t,r)=>{r.r(t),r.d(t,{default:()=>c});var a=r(579);function c(){return(0,a.jsx)("div",{children:"Movies"})}}}]);
+//# sourceMappingURL=346.54e86fa8.chunk.js.map
