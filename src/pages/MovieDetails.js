@@ -1,4 +1,13 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import styled from 'styled-components';
+
+const StyledLink = styled(NavLink)`
+  color: blue;
+
+  &.active {
+    color: orange;
+  }
+`;
 
 export default function MovieDetails() {
   return (
@@ -6,10 +15,10 @@ export default function MovieDetails() {
       <p>MovieDetails</p>
       <ul>
         <li>
-          <NavLink to="cast">cast</NavLink>
+          <StyledLink to="cast">cast</StyledLink>
         </li>
         <li>
-          <NavLink to="reviews">reviews</NavLink>
+          <StyledLink to="reviews">reviews</StyledLink>
         </li>
       </ul>
       <Outlet />

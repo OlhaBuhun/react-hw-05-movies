@@ -1,5 +1,15 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
+import { Suspense } from 'react';
+import styled from 'styled-components';
+
+const StyledLink = styled(NavLink)`
+  color: blue;
+
+  &.active {
+    color: orange;
+  }
+`;
 
 export const AppLayout = () => {
   return (
@@ -8,16 +18,18 @@ export const AppLayout = () => {
         <nav>
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <StyledLink to="/">Home</StyledLink>
             </li>
             <li>
-              <NavLink to="/movies">Movies</NavLink>
+              <StyledLink to="/movies">Movies</StyledLink>
             </li>
           </ul>
         </nav>
       </header>
       <main>
-        <Outlet />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </main>
       <GlobalStyle />
     </>
