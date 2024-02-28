@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { AppLayout } from './AppLayout';
+import { AppLayout } from './AppLayout/AppLayout';
 import Reviews from './Reviews/Reviews';
 import { lazy } from 'react';
 import Cast from './Cast/Cast';
@@ -11,16 +11,7 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
+    <div>
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route index element={<Home />} />

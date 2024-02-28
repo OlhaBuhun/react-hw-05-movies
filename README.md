@@ -128,6 +128,12 @@ GitHub.
       1.3 npm i modern-normalize 
 
       1.4 npm install styled-components
+
+      1.4  npm install axios
+
+      1.5 npm i react-toastify
+
+      1.6 npm i react-icons
    
    2. зарегаться
       https://www.themoviedb.org/u/OlhaBuhun
