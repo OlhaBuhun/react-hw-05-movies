@@ -1,4 +1,5 @@
 import { fetchTrendingMovie } from 'api';
+import MovieList from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
@@ -24,17 +25,16 @@ export default function Home() {
     }
 
     getTrendingMovie();
-    console.log(trendMovies);
-    console.log(setTrendMovies.genres);
   }, []);
   return (
     <div>
       <h1>Trending movies</h1>
-      <ul>
+      {/* <ul>
         {trendMovies.map(({ id, title }) => (
           <li key={id}>{title}</li>
         ))}
-      </ul>
+      </ul> */}
+      <MovieList movies={trendMovies} />
     </div>
   );
 }

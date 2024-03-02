@@ -1,5 +1,5 @@
 import { searchMovie } from 'api';
-// import MovieList from 'components/MovieList/MovieList';
+import MovieList from 'components/MovieList/MovieList';
 import SearchForm from 'components/SearchForm/SearchForm';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -26,7 +26,7 @@ export default function Movies() {
 
   useEffect(() => {
     if (movieSearch.trim() === '') {
-      // toast.error('Щось напиши');
+      toast.error('Щось напиши');
       return;
     }
 
@@ -45,9 +45,6 @@ export default function Movies() {
       }
     }
     getSearchMovie();
-    console.log(isLoading);
-    console.log(movies);
-    console.log(movieSearch);
   }, [movieSearch]);
 
   return (
@@ -57,12 +54,13 @@ export default function Movies() {
         onChange={handleNameChange}
         onSubmit={handleSubmit}
       />
-      <ul>
+      {isLoading && <b>Loding ...</b>}
+      {/* <ul>
         {movies.map(({ title, id }) => (
           <li key={id}>{title}</li>
         ))}
-      </ul>
-      {/* <MovieList movies={movies} /> */}
+      </ul> */}
+      <MovieList movies={movies} />
     </div>
   );
 }
