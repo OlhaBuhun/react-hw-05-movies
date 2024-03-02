@@ -7,7 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 
 export default function Movies() {
   const [query, setQueru] = useState('');
-  const [movies, setMovies] = useState([]);
+  const [searchMovies, setSearchMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -35,7 +35,7 @@ export default function Movies() {
         setIsLoading(true);
 
         const { results } = await searchMovie(movieSearch);
-        setMovies(results);
+        setSearchMovies(results);
       } catch (error) {
         toast.error(
           'Opps! Somathing went wrong! Please try reloading this page'
@@ -55,12 +55,7 @@ export default function Movies() {
         onSubmit={handleSubmit}
       />
       {isLoading && <b>Loding ...</b>}
-      {/* <ul>
-        {movies.map(({ title, id }) => (
-          <li key={id}>{title}</li>
-        ))}
-      </ul> */}
-      <MovieList movies={movies} />
+      <MovieList movies={searchMovies} />
     </div>
   );
 }

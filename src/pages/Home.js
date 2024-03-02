@@ -1,14 +1,13 @@
 import { fetchTrendingMovie } from 'api';
 import MovieList from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function Home() {
   const [trendMovies, setTrendMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
 
   console.log(isLoading);
-  console.log(isError);
 
   useEffect(() => {
     async function getTrendingMovie() {
@@ -18,7 +17,9 @@ export default function Home() {
         const { results } = await fetchTrendingMovie();
         setTrendMovies(results);
       } catch (error) {
-        setIsError(true);
+        toast.error(
+          'Opps! Somathing went wrong! Please try reloading this page'
+        );
       } finally {
         setIsLoading(false);
       }
@@ -29,11 +30,6 @@ export default function Home() {
   return (
     <div>
       <h1>Trending movies</h1>
-      {/* <ul>
-        {trendMovies.map(({ id, title }) => (
-          <li key={id}>{title}</li>
-        ))}
-      </ul> */}
       <MovieList movies={trendMovies} />
     </div>
   );
