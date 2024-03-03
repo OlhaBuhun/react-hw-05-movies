@@ -27,7 +27,7 @@ const Reviews = () => {
     <section>
       {reviews.map(({ author, content, id }) => (
         <li key={id}>
-          <h3>{author}</h3>
+          <h3>Author: {author}</h3>
           <p>{content}</p>
         </li>
       ))}
