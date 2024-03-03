@@ -1,6 +1,12 @@
 import { fetchMovieDetails } from 'api';
-import { useEffect, useState } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams,
+} from 'react-router-dom';
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 
@@ -13,6 +19,10 @@ const StyledLink = styled(NavLink)`
 `;
 
 export default function MovieDetails() {
+  const location = useLocation();
+  const linkRef = useRef(location);
+  const backLinkHref = linkRef.current.state?.from ?? '/';
+
   const [movieDetails, setMovieDetails] = useState(null);
   const { movieId } = useParams();
 
@@ -41,6 +51,9 @@ export default function MovieDetails() {
 
   return (
     <div>
+      <Link to={backLinkHref}>
+        <b>Go back</b>
+      </Link>
       <div>
         <img src={poster} alt={title} width="240" />
         <h1>
