@@ -20,13 +20,16 @@ export default function Movies() {
   const handleSubmit = event => {
     event.preventDefault();
 
+    if (query.trim() === '') {
+      toast.error('Щось напиши');
+      return;
+    }
     setSearchParams({ query: query });
     setQueru('');
   };
 
   useEffect(() => {
-    if (movieSearch.trim() === '') {
-      toast.error('Щось напиши');
+    if (!movieSearch) {
       return;
     }
 

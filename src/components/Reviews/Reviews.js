@@ -11,6 +11,9 @@ const Reviews = () => {
     async function getReviewsMovie() {
       try {
         const { results } = await fetchReviewsMovie(movieId);
+        if (results.length === 0) {
+          return;
+        }
         setReviews(results);
       } catch (error) {
         toast.error(
@@ -20,17 +23,22 @@ const Reviews = () => {
     }
     getReviewsMovie();
   }, [movieId]);
-
-  if (!reviews) return;
+  console.log(reviews);
 
   return (
     <section>
-      {reviews.map(({ author, content, id }) => (
-        <li key={id}>
-          <h3>Author: {author}</h3>
-          <p>{content}</p>
-        </li>
-      ))}
+      {reviews === null ? (
+        <p>We don`t have reviews for this movie</p>
+      ) : (
+        <ul>
+          {reviews.map(({ author, content, id }) => (
+            <li key={id}>
+              <h3>Author: {author}</h3>
+              <p>{content}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 };
