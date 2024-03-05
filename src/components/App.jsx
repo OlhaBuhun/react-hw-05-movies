@@ -4,10 +4,10 @@ import Reviews from './Reviews/Reviews';
 import { lazy } from 'react';
 import Cast from './Cast/Cast';
 
-const Home = lazy(() => import('pages/Home'));
+const Home = lazy(() => import('pages/Home/Home'));
 const Movies = lazy(() => import('pages/Movies'));
-const MovieDetails = lazy(() => import('pages/MovieDetails'));
-const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
+const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
+const NotFoundPage = lazy(() => import('components/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   return (

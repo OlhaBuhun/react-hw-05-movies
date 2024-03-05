@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { Link, useLocation } from 'react-router-dom';
+import { MovieListStyled } from './MovieList.styled';
 
 // eslint-disable-next-line react/prop-types
 const MovieList = ({ movies }) => {
@@ -8,7 +9,7 @@ const MovieList = ({ movies }) => {
 
   return (
     <div>
-      <ul>
+      <MovieListStyled>
         {movies.map(({ title, id }) => (
           <li key={id}>
             <Link to={`/movies/${id}`} state={{ from: location }}>
@@ -16,7 +17,7 @@ const MovieList = ({ movies }) => {
             </Link>
           </li>
         ))}
-      </ul>
+      </MovieListStyled>
     </div>
   );
 };

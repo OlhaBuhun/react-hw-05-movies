@@ -10,8 +10,12 @@ export const HeaderStyled = styled.header`
   align-items: center;
   min-height: 64px;
   justify-content: space-between;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
   background-color: yellow;
+  border-radius: 4px;
+  box-shadow:
+    0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 `;
 
 export const NavStyled = styled.nav`

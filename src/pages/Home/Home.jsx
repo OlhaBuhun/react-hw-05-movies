@@ -2,6 +2,7 @@ import { fetchTrendingMovie } from 'api';
 import MovieList from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { HomeTitle } from './Home.styled';
 
 export default function Home() {
   const [trendMovies, setTrendMovies] = useState([]);
@@ -29,7 +30,7 @@ export default function Home() {
   }, []);
   return (
     <div>
-      <h1>Trending movies</h1>
+      <HomeTitle>Trending movies</HomeTitle>
       <MovieList movies={trendMovies} />
     </div>
   );

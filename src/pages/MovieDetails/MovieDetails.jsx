@@ -1,22 +1,13 @@
 import { fetchMovieDetails } from 'api';
 import { useEffect, useRef, useState } from 'react';
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import styled from 'styled-components';
-
-const StyledLink = styled(NavLink)`
-  color: blue;
-
-  &.active {
-    color: orange;
-  }
-`;
+import { FaArrowRotateLeft } from 'react-icons/fa6';
+import {
+  DetailsCard,
+  DetailsContainer,
+  DetailsLink,
+} from './MovieDetails.styled';
 
 export default function MovieDetails() {
   const location = useLocation();
@@ -50,29 +41,36 @@ export default function MovieDetails() {
   const rating = vote_average && Math.round(vote_average * 10);
 
   return (
-    <div>
-      <Link to={backLinkHref}>
-        <b>Go back</b>
-      </Link>
+    <DetailsContainer>
       <div>
-        <img src={poster} alt={title} width="240" />
-        <h1>
-          {title} ({date})
-        </h1>
-        <p>{overview}</p>
-        <h2>user Score: {rating}%</h2>
-        <h2>Genres</h2>
-        <p>{genres && genres.map(genre => genre.name).join(', ')}</p>
+        <Link to={backLinkHref}>
+          {/* <b>Go back</b> */}
+          <span>
+            <FaArrowRotateLeft size="20" />
+          </span>
+        </Link>
       </div>
+      <DetailsCard>
+        <img src={poster} alt={title} width="240" />
+        <div>
+          <h1>
+            {title} ({date})
+          </h1>
+          <p>{overview}</p>
+          <h3>user Score: {rating}%</h3>
+          <h3>Genres</h3>
+          <p>{genres && genres.map(genre => genre.name).join(', ')}</p>
+        </div>
+      </DetailsCard>
       <ul>
         <li>
-          <StyledLink to="cast">cast</StyledLink>
+          <DetailsLink to="cast">cast</DetailsLink>
         </li>
         <li>
-          <StyledLink to="reviews">reviews</StyledLink>
+          <DetailsLink to="reviews">reviews</DetailsLink>
         </li>
       </ul>
       <Outlet />
-    </div>
+    </DetailsContainer>
   );
 }

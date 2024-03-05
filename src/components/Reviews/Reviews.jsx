@@ -2,6 +2,7 @@ import { fetchReviewsMovie } from 'api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { ReviewsItem, ReviewsLink } from './Reviews.styled';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState(null);
@@ -23,21 +24,20 @@ const Reviews = () => {
     }
     getReviewsMovie();
   }, [movieId]);
-  console.log(reviews);
 
   return (
     <section>
       {reviews === null ? (
         <p>We don`t have reviews for this movie</p>
       ) : (
-        <ul>
+        <ReviewsLink>
           {reviews.map(({ author, content, id }) => (
-            <li key={id}>
+            <ReviewsItem key={id}>
               <h3>Author: {author}</h3>
               <p>{content}</p>
-            </li>
+            </ReviewsItem>
           ))}
-        </ul>
+        </ReviewsLink>
       )}
     </section>
   );

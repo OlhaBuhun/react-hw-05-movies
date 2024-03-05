@@ -2,6 +2,7 @@ import { fetchCastMovie } from 'api';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { CastItem, CastList } from './Cast.styled';
 
 const Cast = () => {
   const [cast, setCast] = useState(null);
@@ -29,9 +30,9 @@ const Cast = () => {
       {cast === null ? (
         <p>We don`t have cast for this movie</p>
       ) : (
-        <ul>
+        <CastList>
           {cast?.map(({ original_name, character, profile_path, id }) => (
-            <li key={id}>
+            <CastItem key={id}>
               <img
                 src={
                   profile_path &&
@@ -42,9 +43,9 @@ const Cast = () => {
               />
               <h3>{original_name}</h3>
               <h3>Character: {character}</h3>
-            </li>
+            </CastItem>
           ))}
-        </ul>
+        </CastList>
       )}
     </section>
   );
