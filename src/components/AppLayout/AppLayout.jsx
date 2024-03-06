@@ -9,6 +9,7 @@ import {
   NavStyled,
   StyledLink,
 } from './AppLayout.styled';
+import Loader from 'components/Loader';
 
 export const AppLayout = () => {
   return (
@@ -26,7 +27,7 @@ export const AppLayout = () => {
         </NavStyled>
       </HeaderStyled>
       <main>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>
