@@ -134,6 +134,8 @@ GitHub.
       1.5 npm i react-toastify
 
       1.6 npm i react-icons
+
+      1.7 npm install react-loader-spinner --save
    
    2. зарегаться
       https://www.themoviedb.org/u/OlhaBuhun

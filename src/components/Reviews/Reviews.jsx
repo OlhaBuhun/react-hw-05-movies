@@ -3,14 +3,18 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { ReviewsItem, ReviewsLink } from './Reviews.styled';
+import Loader from 'components/Loader';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
 
   useEffect(() => {
     async function getReviewsMovie() {
       try {
+        setIsLoading(true);
+
         const { results } = await fetchReviewsMovie(movieId);
         if (results.length === 0) {
           return;
@@ -20,6 +24,8 @@ const Reviews = () => {
         toast.error(
           'Opps! Somathing went wrong! Please try reloading this page'
         );
+      } finally {
+        setIsLoading(false);
       }
     }
     getReviewsMovie();
@@ -27,6 +33,7 @@ const Reviews = () => {
 
   return (
     <section>
+      {isLoading && <Loader />}
       {reviews === null ? (
         <p>We don`t have reviews for this movie</p>
       ) : (

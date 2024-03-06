@@ -8,6 +8,7 @@ import {
   DetailsContainer,
   DetailsLink,
 } from './MovieDetails.styled';
+import Loader from 'components/Loader';
 
 export default function MovieDetails() {
   const location = useLocation();
@@ -15,17 +16,22 @@ export default function MovieDetails() {
   const backLinkHref = linkRef.current.state?.from ?? '/';
 
   const [movieDetails, setMovieDetails] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
 
   useEffect(() => {
     async function getMovieDetalis() {
       try {
+        setIsLoading(true);
+
         const fetchDetails = await fetchMovieDetails(movieId);
         setMovieDetails(fetchDetails);
       } catch (error) {
         toast.error(
           'Opps! Somathing went wrong! Please try reloading this page'
         );
+      } finally {
+        setIsLoading(false);
       }
     }
     getMovieDetalis();
@@ -42,6 +48,7 @@ export default function MovieDetails() {
 
   return (
     <DetailsContainer>
+      {isLoading && <Loader />}
       <div>
         <Link to={backLinkHref}>
           {/* <b>Go back</b> */}
