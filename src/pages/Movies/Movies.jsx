@@ -4,6 +4,7 @@ import SearchForm from 'components/SearchForm/SearchForm';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useSearchParams } from 'react-router-dom';
+import Loader from 'components/Loader';
 
 export default function Movies() {
   const [query, setQueru] = useState('');
@@ -21,7 +22,7 @@ export default function Movies() {
     event.preventDefault();
 
     if (query.trim() === '') {
-      toast.error('Щось напиши');
+      toast.error('Write down the name of the movie.');
       return;
     }
     setSearchParams({ query: query });
@@ -38,6 +39,10 @@ export default function Movies() {
         setIsLoading(true);
 
         const { results } = await searchMovie(movieSearch);
+
+        if (results.length === 0) {
+          return toast('...Nothing found :-(');
+        }
         setSearchMovies(results);
       } catch (error) {
         toast.error(
@@ -57,7 +62,7 @@ export default function Movies() {
         onChange={handleNameChange}
         onSubmit={handleSubmit}
       />
-      {isLoading && <b>Loding ...</b>}
+      {isLoading && <Loader />}
       <MovieList movies={searchMovies} />
     </div>
   );
